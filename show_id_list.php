@@ -1,7 +1,5 @@
 <?php
-require_once("./configure.php");
-
-$return_var = shell_exec('aws ec2 describe-instances --filter "Name=tag:Name,Values={$filter}"');
+$return_var = shell_exec('aws ec2 describe-instances --filter "Name=tag:Name,Values=LG-Web-*"');
 $instances = json_decode($return_var, true);
 
 $sttopped_instances = array();
