@@ -1,0 +1,2 @@
+<?php
+$filter = "LG-Web-*";
