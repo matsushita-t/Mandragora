@@ -1,13 +1,11 @@
 <?php
-require_once("./configure.php");
-
 if (empty($argv[0])) {
     echo "引数を指定してください example : php launch_instance.php start or php launch_instance.php stop";
     exit;
 }
 $state = $argv[0];
 
-$return_var = shell_exec('aws ec2 describe-instances --filter "Name=tag:Name,Values={$filter}"');
+$return_var = shell_exec('aws ec2 describe-instances --filter "Name=tag:Name,Values=LG-Web-*"');
 $instances = json_decode($return_var, true);
 
 $sttopped_instances = array();
