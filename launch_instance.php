@@ -5,6 +5,14 @@ if (empty($argv[0])) {
 }
 $state = $argv[0];
 
+if ($state == "start") {
+    $server_status = "stopped";
+} else if ($state == "stop") {
+    $server_status = "running";
+} else {
+    $server_status = "";
+}
+
 $return_var = shell_exec('aws ec2 describe-instances --filter "Name=tag:Name,Values=LG-Web-*"');
 $instances = json_decode($return_var, true);
 
